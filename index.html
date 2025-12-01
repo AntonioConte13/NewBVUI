@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BVAI | Coaching Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      // Initialize theme immediately to prevent FOUC
+      if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Nunito', 'sans-serif'],
+              display: ['Nunito', 'sans-serif'],
+            },
+            colors: {
+              duo: {
+                // Primary (Red/Green branding remains static)
+                green: '#DC2626', // Red 600
+                greenDark: '#991B1B', // Red 800
+                
+                // Secondary 
+                blue: '#4B5563', // Gray 600
+                blueDark: '#1F2937', // Gray 800
+                
+                // Danger
+                red: '#EF4444', // Red 500
+                redDark: '#7F1D1D', // Red 900
+                
+                // Highlights
+                yellow: '#9CA3AF', // Gray 400
+                yellowDark: '#D1D5DB', // Gray 300
+                
+                // Dynamic Neutrals (Mapped to CSS Variables)
+                gray: {
+                  100: 'rgb(var(--rgb-gray-100) / <alpha-value>)', 
+                  200: 'rgb(var(--rgb-gray-200) / <alpha-value>)', 
+                  300: 'rgb(var(--rgb-gray-300) / <alpha-value>)', 
+                  400: 'rgb(var(--rgb-gray-400) / <alpha-value>)', 
+                  500: 'rgb(var(--rgb-gray-500) / <alpha-value>)', 
+                  800: 'rgb(var(--rgb-gray-800) / <alpha-value>)', 
+                }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* LIGHT MODE DEFAULTS */
+        --bg-body: #F9FAFB;
+        --bg-card: #FFFFFF;
+        --text-main: #111827;
+
+        /* RGB triplets for Tailwind Alpha support */
+        --rgb-gray-100: 243 244 246; /* #F3F4F6 */
+        --rgb-gray-200: 229 231 235; /* #E5E7EB */
+        --rgb-gray-300: 209 213 219; /* #D1D5DB */
+        --rgb-gray-400: 156 163 175; /* #9CA3AF */
+        --rgb-gray-500: 107 114 128; /* #6B7280 */
+        --rgb-gray-800: 31 41 55;    /* #1F2937 */
+      }
+
+      html.dark {
+        /* DARK MODE OVERRIDES */
+        --bg-body: #111827;
+        --bg-card: #1F2937;
+        --text-main: #F3F4F6;
+
+        /* Inverted Grays for Dark Theme */
+        --rgb-gray-100: 31 41 55;    /* #1F2937 */
+        --rgb-gray-200: 55 65 81;    /* #374151 */
+        --rgb-gray-300: 75 85 99;    /* #4B5563 */
+        --rgb-gray-400: 156 163 175; /* #9CA3AF */
+        --rgb-gray-500: 209 213 219; /* #D1D5DB */
+        --rgb-gray-800: 243 244 246; /* #F3F4F6 */
+      }
+
+      body {
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Dynamic Overrides to maintain existing component structure while enabling theming */
+      .bg-white {
+        background-color: var(--bg-card) !important;
+        color: var(--text-main) !important;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      .text-duo-gray-800 {
+        color: rgb(var(--rgb-gray-800)) !important;
+      }
+      
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-body); 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgb(var(--rgb-gray-200)); 
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(var(--rgb-gray-300)); 
+      }
+      
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(156, 163, 175, 0.3);
+        border-radius: 20px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
